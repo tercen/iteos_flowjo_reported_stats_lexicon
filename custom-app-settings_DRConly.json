@@ -1,0 +1,210 @@
+[
+  {
+    "kind": "AppDesign",
+    "namespace": "DRC_templateWorkflow",
+    "description": "Match the dose response curve template workflow to your experimental design!",
+    "name": "DRC",
+    "type": "DRC_templateWorkflow",
+    "factors": [
+      {
+        "kind": "MappingFactor",
+        "name": "sample.concentration (μM)",
+        "type": "double",
+        "isSingle": true,
+        "description": "Select the factor that contains the different concentrations in μM.",
+        "factorName": "Compound concentration in μM",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "sample.compound concentration",
+            "type": "double"
+          },
+          {
+            "kind": "Factor",
+            "name": "sample.concentration (μM)",
+            "type": "double"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "measurements.value",
+        "type": "double",
+        "isSingle": true,
+        "description": "Select the factor that contains the data to be analysed in long format. \n\n (Hint: the values factor of the previous Gather step)",
+        "factorName": "Measurements in long format",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "measurements.value",
+            "type": "double"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "sample.sample group",
+        "type": "string",
+        "isSingle": true,
+        "description": "Select the factor that contains the sample groups",
+        "factorName": "Sample group",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "sample.sample group",
+            "type": "string"
+          },
+          {
+            "kind": "Factor",
+            "name": "sample.Sample group",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "sample.ELN",
+        "type": "string",
+        "isSingle": false,
+        "description": "Select the factor that contains the ELN of the experiment(s).",
+        "factorName": "Electronic Lab Notebook (ELN)",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "sample.ELN",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "sample.plate ID",
+        "type": "string",
+        "isSingle": false,
+        "description": "Select the factor that contains the plate ID(s).",
+        "factorName": "Plate ID",
+         "factors": [
+          {
+            "kind": "Factor",
+            "name": "sample.plate ID",
+            "type": "string"
+          },
+          {
+            "kind": "Factor",
+            "name": "sample.Plate ID",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "sample.well",
+        "type": "string",
+        "isSingle": false,
+        "description": "Select the factor that contains the well.",
+        "factorName": "Well",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "sample.Well",
+            "type": "string"
+          },
+          {
+            "kind": "Factor",
+            "name": "sample.well",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "sample.donor",
+        "type": "string",
+        "isSingle": false,
+        "description": "Select the fator that contains the donor ID(s).",
+        "factorName": "Donor",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "sample.donor",
+            "type": "string"
+          },{
+            "kind": "Factor",
+            "name": "sample.Donor",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "measurements.variable",
+        "type": "string",
+        "isSingle": false,
+        "description": "Select the factor that contains the readouts that have been measured in long format. \n\n (Hint: the variables factor of the previous Gather step)",
+        "factorName": "Variables in long format",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "measurements.variable",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "sample.compound",
+        "type": "string",
+        "isSingle": false,
+        "description": "Select the factor that contains the different compounds.",
+        "factorName": "Compound",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "sample.compound",
+            "type": "string"
+          },
+          {
+            "kind": "Factor",
+            "name": "sample.Compound",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      }
+    ],
+    "filters": [
+      {
+        "kind": "MappingFilter",
+        "name": "Keep only DMSOs",
+        "description": "",
+        "namedFilter": {
+          "kind": "NamedFilter",
+          "logical": "and",
+          "not": false,
+          "filterExprs": [
+            {
+              "kind": "FilterExpr",
+              "filterOp": "equals",
+              "stringValue": "DMSO",
+              "factor": {
+                "kind": "Factor",
+                "name": "sample.compound",
+                "type": "string"
+              }
+            }
+          ],
+          "name": "Keep only DMSOs"
+        },
+        "isRequired": false
+      }
+    ]
+  }
+]
