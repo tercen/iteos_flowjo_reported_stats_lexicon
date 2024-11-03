@@ -27,7 +27,7 @@
         "name": "Observation",
         "type": "string",
         "isSingle": false,
-        "description": "The column from the FlowJo exported file that contains the sample or file names (e.g. samples)",
+        "description": "Select the samples column from the measurement file (i.e., FlowJo file).\n\nExamples: `samples`",
         "factorName": "File/Sample name (FlowJo stats file)",
         "factors": [],
         "isRequired": true
@@ -37,7 +37,7 @@
         "name": "sample.Observation",
         "type": "string",
         "isSingle": false,
-        "description": "The column from the sample annotation file that contains the sample or file names (e.g. sample.samples)",
+        "description": "Select the samples column from the sample annotation file.\n\nExamples: `sample.samples`",
         "factorName": "File/Sample name (sample annotation file)",
         "factors": [
           {
@@ -53,8 +53,8 @@
         "name": "sample.Supergroup",
         "type": "string",
         "isSingle": false,
-        "description": "If the dataset contains data from multiple ELNs, choose sample.ELN. Otherwise, leave blank and click 'Next'.",
-        "factorName": "ELN",
+        "description": "Select the ELN column from the sample annotation file, otherwise, leave blank.\n\nExamples: `sample.ELN`",
+        "factorName": "sample.ELN",
         "factors": [],
         "isRequired": false
       },
@@ -116,7 +116,7 @@
         "name": "sample.Group",
         "type": "string",
         "isSingle": false,
-        "description": "The factor that holds the different compounds or conditions to compare (e.g. sample.compound).",
+        "description": "Select the factors representing the conditions. Multiple selections are possible.\n\nExamples: `sample.compound`, `sample.ATP`, `sample.Ab`, `sample.Ab2` and etc..",
         "factorName": "Compounds/Conditions",
         "factors": [
           {
