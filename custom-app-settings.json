@@ -11,7 +11,7 @@
         "name": "exp.value",
         "type": "double",
         "isSingle": true,
-        "description": "Measurements in long format. The .value output of the Gather step, called exp.value",
+        "description": "No selection necessary, click `Next`",
         "factorName": "The FlowJo reported stats",
         "factors": [
           {
@@ -63,7 +63,7 @@
         "name": "exp.variable",
         "type": "string",
         "isSingle": false,
-        "description": "FlowJo table columns/headers representing the various sub-populations. The .variable output of the Gather step, called exp.variable",
+        "description": "No selection necessary, click `Next`",
         "factorName": "FlowJo sub-populations (FlowJo stats file)",
         "factors": [
           {
@@ -79,7 +79,7 @@
         "name": "cellpop.FlowJo name",
         "type": "string",
         "isSingle": false,
-        "description": "Column of the display labels file that contains the various FlowJo-reported sub-populations (e.g cellpop.FlowJo name).",
+        "description": "No selection necessary, click `Next`",
         "factorName": "FlowJo sub-populations (display labels file)",
         "factors": [
           {
@@ -100,7 +100,7 @@
         "name": "cellpop.Display name",
         "type": "string",
         "isSingle": false,
-        "description": "Column of the display labels file that contains the desired labels for the various sub-populations (e.g cellpop.Display name)",
+        "description": "No selection necessary, click `Next`",
         "factorName": "Display labelsfor sub-populations",
         "factors": [
           {
