@@ -1,0 +1,492 @@
+[
+  {
+    "kind": "AppDesign",
+    "namespace": "DRC_templateWorkflow",
+    "description": "Match the dose response curve template workflow to your experimental design!",
+    "name": "DRC",
+    "type": "DRC_templateWorkflow",
+    "factors": [
+      {
+        "kind": "MappingFactor",
+        "name": "sample.concentration (μM)",
+        "type": "double",
+        "isSingle": true,
+        "description": "Select the factor that contains the different concentrations in μM.",
+        "factorName": "Compound concentration in μM",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "sample.compound concentration",
+            "type": "double"
+          },
+          {
+            "kind": "Factor",
+            "name": "sample.concentration (μM)",
+            "type": "double"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "measurements.value",
+        "type": "double",
+        "isSingle": true,
+        "description": "Select the factor that contains the data to be analysed in long format. \n\n (Hint: the values factor of the previous Gather step)",
+        "factorName": "Measurements in long format",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "measurements.value",
+            "type": "double"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "sample.sample group",
+        "type": "string",
+        "isSingle": true,
+        "description": "Select the factor that contains the sample groups",
+        "factorName": "Sample group",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "sample.sample group",
+            "type": "string"
+          },
+          {
+            "kind": "Factor",
+            "name": "sample.Sample group",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "sample.ELN",
+        "type": "string",
+        "isSingle": false,
+        "description": "Select the factor that contains the ELN of the experiment(s).",
+        "factorName": "Electronic Lab Notebook (ELN)",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "sample.ELN",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "sample.plate ID",
+        "type": "string",
+        "isSingle": false,
+        "description": "Select the factor that contains the plate ID(s).",
+        "factorName": "Plate ID",
+         "factors": [
+          {
+            "kind": "Factor",
+            "name": "sample.plate ID",
+            "type": "string"
+          },
+          {
+            "kind": "Factor",
+            "name": "sample.Plate ID",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "sample.well",
+        "type": "string",
+        "isSingle": false,
+        "description": "Select the factor that contains the well.",
+        "factorName": "Well",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "sample.Well",
+            "type": "string"
+          },
+          {
+            "kind": "Factor",
+            "name": "sample.well",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "sample.donor",
+        "type": "string",
+        "isSingle": false,
+        "description": "Select the fator that contains the donor ID(s).",
+        "factorName": "Donor",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "sample.donor",
+            "type": "string"
+          },{
+            "kind": "Factor",
+            "name": "sample.Donor",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "measurements.variable",
+        "type": "string",
+        "isSingle": false,
+        "description": "Select the factor that contains the readouts that have been measured in long format. \n\n (Hint: the variables factor of the previous Gather step)",
+        "factorName": "Variables in long format",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "measurements.variable",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "sample.compound",
+        "type": "string",
+        "isSingle": false,
+        "description": "Select the factor that contains the different compounds.",
+        "factorName": "Compound",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "sample.compound",
+            "type": "string"
+          },
+          {
+            "kind": "Factor",
+            "name": "sample.Compound",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      }
+    ],
+    "filters": [
+      {
+        "kind": "MappingFilter",
+        "name": "Keep only DMSOs",
+        "description": "",
+        "namedFilter": {
+          "kind": "NamedFilter",
+          "logical": "and",
+          "not": false,
+          "filterExprs": [
+            {
+              "kind": "FilterExpr",
+              "filterOp": "equals",
+              "stringValue": "DMSO",
+              "factor": {
+                "kind": "Factor",
+                "name": "sample.compound",
+                "type": "string"
+              }
+            }
+          ],
+          "name": "Keep only DMSOs"
+        },
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "kind": "AppDesign",
+    "namespace": "FlowJo_stats",
+    "description": "",
+    "name": "MME_default_settings",
+    "type": "MME_FlowJo_stats",
+    "factors": [
+      {
+        "kind": "MappingFactor",
+        "name": "exp.value",
+        "type": "double",
+        "isSingle": true,
+        "description": "Measurements in long format. The .value output of the Gather step, called exp.value",
+        "factorName": "The FlowJo reported stats",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "exp.value",
+            "type": "double"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "Observation",
+        "type": "string",
+        "isSingle": false,
+        "description": "Select the samples column from the measurement file (i.e., flowjo file).\n\nExamples:\n*samples",
+        "factorName": "File/Sample name (FlowJo stats file)",
+        "factors": [],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "sample.Observation",
+        "type": "string",
+        "isSingle": false,
+        "description": "Select the samples column from the sample annotation file.\n\nExamples:\n*sample.samples",
+        "factorName": "File/Sample name (sample annotation file)",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "sample.samples",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "sample.Supergroup",
+        "type": "string",
+        "isSingle": false,
+        "description": "Select the ELN column from the sample annotation file, otherwise, leave blank.\n\nExamples:\n*sample.ELN",
+        "factorName": "ELN",
+        "factors": [],
+        "isRequired": false
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "exp.variable",
+        "type": "string",
+        "isSingle": false,
+        "description": "FlowJo table columns/headers representing the various sub-populations. The .variable output of the Gather step, called exp.variable",
+        "factorName": "FlowJo sub-populations (FlowJo stats file)",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "exp.variable",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "cellpop.FlowJo name",
+        "type": "string",
+        "isSingle": false,
+        "description": "Column of the display labels file that contains the various FlowJo-reported sub-populations (e.g cellpop.FlowJo name).",
+        "factorName": "FlowJo sub-populations (display labels file)",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "cellpop.FlowJo name",
+            "type": "string"
+          },
+          {
+            "kind": "Factor",
+            "name": "cellpop.Flowjo name",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "cellpop.Display name",
+        "type": "string",
+        "isSingle": false,
+        "description": "Column of the display labels file that contains the desired labels for the various sub-populations (e.g cellpop.Display name)",
+        "factorName": "Display labelsfor sub-populations",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "cellpop.Display name",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "kind": "MappingFactor",
+        "name": "sample.Group",
+        "type": "string",
+        "isSingle": false,
+        "description": "Select the factors representing the conditions.\n\nMultiple selections are possible.\n\nExamples:\n*sample.treatment\n*sample.compound\n*sample.ATP\n*sample.Ab\n*sample.Ab2\n*etc..",
+        "factorName": "Compounds/Conditions",
+        "factors": [
+          {
+            "kind": "Factor",
+            "name": "sample.compound",
+            "type": "string"
+          }
+        ],
+        "isRequired": true
+      }
+    ],
+    "filters": [
+      {
+        "kind": "MappingFilter",
+        "name": "Are there any unmatched columns?",
+        "description": "",
+        "namedFilter": {
+          "kind": "NamedFilter",
+          "logical": "or",
+          "not": false,
+          "filterExprs": [
+            {
+              "kind": "FilterExpr",
+              "filterOp": "equals",
+              "stringValue": "",
+              "factor": {
+                "kind": "Factor",
+                "name": "cellpop.Display name",
+                "type": "string"
+              }
+            },
+            {
+              "kind": "FilterExpr",
+              "filterOp": "equals",
+              "stringValue": "NA",
+              "factor": {
+                "kind": "Factor",
+                "name": "cellpop.Display name",
+                "type": "string"
+              }
+            }
+          ],
+          "name": "Are there any unmatched columns?"
+        },
+        "isRequired": false
+      },
+      {
+        "kind": "MappingFilter",
+        "name": "Kepp only matched columns",
+        "description": "",
+        "namedFilter": {
+          "kind": "NamedFilter",
+          "logical": "or",
+          "not": true,
+          "filterExprs": [
+            {
+              "kind": "FilterExpr",
+              "filterOp": "equals",
+              "stringValue": "",
+              "factor": {
+                "kind": "Factor",
+                "name": "cellpop.Display name",
+                "type": "string"
+              }
+            },
+            {
+              "kind": "FilterExpr",
+              "filterOp": "equals",
+              "stringValue": "NA",
+              "factor": {
+                "kind": "Factor",
+                "name": "cellpop.Display name",
+                "type": "string"
+              }
+            }
+          ],
+          "name": "Kepp only matched columns"
+        },
+        "isRequired": false
+      },
+      {
+        "kind": "MappingFilter",
+        "name": "Select your control compound/condition (mean)",
+        "description": "",
+        "namedFilter": {
+          "kind": "NamedFilter",
+          "logical": "and",
+          "not": false,
+          "filterExprs": [
+            {
+              "kind": "FilterExpr",
+              "filterOp": "equals",
+              "stringValue": "01 iso",
+              "factor": {
+                "kind": "Factor",
+                "name": "sample.compound",
+                "type": "string"
+              }
+            }
+          ],
+          "name": "Select your control compound/condition (mean)"
+        },
+        "isRequired": false
+      },
+      {
+        "kind": "MappingFilter",
+        "name": "Select your control compound/condition (median)",
+        "description": "",
+        "namedFilter": {
+          "kind": "NamedFilter",
+          "logical": "and",
+          "not": false,
+          "filterExprs": [
+            {
+              "kind": "FilterExpr",
+              "filterOp": "equals",
+              "stringValue": "01 iso",
+              "factor": {
+                "kind": "Factor",
+                "name": "sample.compound",
+                "type": "string"
+              }
+            }
+          ],
+          "name": "Select your control compound/condition (median)"
+        },
+        "isRequired": false
+      },
+      {
+        "kind": "MappingFilter",
+        "name": "Keep only matched columns",
+        "description": "",
+        "namedFilter": {
+          "kind": "NamedFilter",
+          "logical": "or",
+          "not": true,
+          "filterExprs": [
+            {
+              "kind": "FilterExpr",
+              "filterOp": "equals",
+              "stringValue": "",
+              "factor": {
+                "kind": "Factor",
+                "name": "cellpop.Display name",
+                "type": "string"
+              }
+            },
+            {
+              "kind": "FilterExpr",
+              "filterOp": "equals",
+              "stringValue": "NA",
+              "factor": {
+                "kind": "Factor",
+                "name": "cellpop.Display name",
+                "type": "string"
+              }
+            }
+          ],
+          "name": "Keep only matched columns"
+        },
+        "isRequired": false
+      }
+    ]
+  }
+]

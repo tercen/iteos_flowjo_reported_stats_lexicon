@@ -199,7 +199,7 @@
       },
       {
         "kind": "MappingFilter",
-        "name": "Select your control compound/condition",
+        "name": "Select your control compound/condition (mean)",
         "description": "",
         "namedFilter": {
           "kind": "NamedFilter",
@@ -217,7 +217,31 @@
               }
             }
           ],
-          "name": "Select your control compound/condition"
+          "name": "Select your control compound/condition (mean)"
+        },
+        "isRequired": false
+      },
+      {
+        "kind": "MappingFilter",
+        "name": "Select your control compound/condition (median)",
+        "description": "",
+        "namedFilter": {
+          "kind": "NamedFilter",
+          "logical": "and",
+          "not": false,
+          "filterExprs": [
+            {
+              "kind": "FilterExpr",
+              "filterOp": "equals",
+              "stringValue": "01 iso",
+              "factor": {
+                "kind": "Factor",
+                "name": "sample.compound",
+                "type": "string"
+              }
+            }
+          ],
+          "name": "Select your control compound/condition (median)"
         },
         "isRequired": false
       },
